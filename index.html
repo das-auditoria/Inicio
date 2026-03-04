@@ -212,7 +212,7 @@ const registros=[
 },
     {
     tramite:"DAS-2026-2223",
-    cu:"91306",
+    cu:"46851",
     dni:"28981399",
     nombre:"MAURICIO LUIS NAVARRO",
     tipo:"Certificación de Analítico y Título",
@@ -286,39 +286,39 @@ document.getElementById("searchForm").addEventListener("submit",function(e){
     const dni=document.getElementById("dni").value.trim();
     const box=document.getElementById("resultBox");
 
-    const resultados = registros.filter(r => r.cu === cu && r.dni === dni);
+    const registro = registros.find(r => r.cu === cu && r.dni === dni);
 
-    if (resultados.length > 0) {
+if (registro) {
 
-    let contenidoFinal = "";
+    let botonesDocs = "";
+    if (registro.documentos && registro.documentos.length > 0) {
+        registro.documentos.forEach(doc => {
+            botonesDocs += `<a href="${doc.link}" target="_blank" class="doc-btn">${doc.nombre}</a>`;
+        });
+    }
 
-    resultados.forEach(registro => {
-
-        let botonesDocs = "";
-        if (registro.documentos && registro.documentos.length > 0) {
-            registro.documentos.forEach(doc => {
-                botonesDocs += `<a href="${doc.link}" target="_blank" class="doc-btn">${doc.nombre}</a>`;
-            });
-        }
-
-        contenidoFinal += `
-        <div style="margin-bottom:40px; padding-bottom:25px; border-bottom:2px dashed #ccc;">
-            <p><strong>Titular:</strong> ${registro.nombre}</p>
-            <p><strong>(DNI):</strong> ${registro.dni}</p>
-            <p><strong>(CUV):</strong> ${registro.cu}</p>
-            <p><strong>Documentación:</strong> ${registro.tipo}</p>
-            <p><strong>Fecha de Validación:</strong> ${registro.fecha}</p>
-            <p><strong>Estado:</strong> 
-                <span class="status ${registro.estado}">
-                ${registro.estado.toUpperCase()}
-                </span>
-            </p>
+    box.innerHTML = `
+        <p><strong>Titular:</strong> ${registro.nombre}</p>
+        <p><strong>(DNI):</strong> ${registro.dni}</p>
+        <p><strong>(CUV):</strong> ${registro.cu}</p>
+        <p><strong>Documentación:</strong> ${registro.tipo}</p>
+        <p><strong>Fecha de Validación:</strong> ${registro.fecha}</p>
+        <p><strong>Estado:</strong> 
+            <span class="status ${registro.estado}">
+            ${registro.estado.toUpperCase()}
+            </span>
+        </p>
+        <div class="botones-container">
+            ${botonesDocs}
         </div>
-        `;
-    });
+    `;
 
-    box.innerHTML = contenidoFinal;
     box.style.display = "block";
+
+} else {
+    box.innerHTML = '<div class="error-box">No se encontró ningún registro con los datos ingresados.</div>';
+    box.style.display = "block";
+}
 
 } else {
         box.innerHTML='<div class="error-box">No se encontró ningún registro con los datos ingresados.</div>';
