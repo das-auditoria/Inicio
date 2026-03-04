@@ -269,58 +269,41 @@ document.getElementById("searchForm").addEventListener("submit",function(e){
     const dni=document.getElementById("dni").value.trim();
     const box=document.getElementById("resultBox");
 
-    registroActual=registros.find(r=>r.cu===cu && r.dni===dni);
+    const resultados = registros.filter(r => r.cu === cu && r.dni === dni);
 
-    if(registroActual){
+    if (resultados.length > 0) {
 
-        let botonesDocs="";
-        if(registroActual.documentos && registroActual.documentos.length>0){
-            registroActual.documentos.forEach(doc=>{
-                botonesDocs+=`<a href="${doc.link}" target="_blank" class="doc-btn">${doc.nombre}</a>`;
+    let contenidoFinal = "";
+
+    resultados.forEach(registro => {
+
+        let botonesDocs = "";
+        if (registro.documentos && registro.documentos.length > 0) {
+            registro.documentos.forEach(doc => {
+                botonesDocs += `<a href="${doc.link}" target="_blank" class="doc-btn">${doc.nombre}</a>`;
             });
         }
 
-        let botonCredencial="";
-        if(registroActual.credencial){
-            botonCredencial=`
-            <div class="pdf-btn">
-                <a href="${registroActual.credencial}" target="_blank" class="doc-btn">Ver Credencial</a>
-            </div>`;
-        }
-
-        box.innerHTML=`
-            <p><strong>Titular:</strong> ${registroActual.nombre}</p>
-            <p><strong>(DNI):</strong> ${registroActual.dni}</p>
-            <p><strong>(CUV):</strong> ${registroActual.cu}</p>
-            <p><strong>Documentación:</strong> ${registroActual.tipo}</p>
-            <p><strong>Fecha de Validación:</strong> ${registroActual.fecha}</p>
-            <p><strong>Estado del Documento:</strong> <span class="status ${registroActual.estado}">
-            ${registroActual.estado.toUpperCase()}
-            </span></p>
-            <p><strong>Auditoria Técnica Responsable:</strong> ${registroActual.responsable}</p>
-            <p><strong>Detalle Técnico:</strong> ${registroActual.observaciones}</p>
-
-            <div class="sello-digital">
-                ✔ VERIFICACIÓN DIGITAL ACTIVA
-            </div>
-
-            <h4 style="margin-top:20px;">Documentación Certificada:</h4>
-            <div class="botones-container">
-                ${botonesDocs}
-            </div>
-
-            <div class="pdf-btn">
-                <a href="${registroActual.certificado}" target="_blank" class="doc-btn">Descargar Certificación</a>
-            </div>
-
-            ${botonCredencial}
-
-            <img src="https://i.postimg.cc/qRb5kmz9/file-00000000f488720ea6de77b1628683b5.png" class="validado-img" alt="Validado por">
+        contenidoFinal += `
+        <div style="margin-bottom:40px; padding-bottom:25px; border-bottom:2px dashed #ccc;">
+            <p><strong>Titular:</strong> ${registro.nombre}</p>
+            <p><strong>(DNI):</strong> ${registro.dni}</p>
+            <p><strong>(CUV):</strong> ${registro.cu}</p>
+            <p><strong>Documentación:</strong> ${registro.tipo}</p>
+            <p><strong>Fecha de Validación:</strong> ${registro.fecha}</p>
+            <p><strong>Estado:</strong> 
+                <span class="status ${registro.estado}">
+                ${registro.estado.toUpperCase()}
+                </span>
+            </p>
+        </div>
         `;
+    });
 
-        box.style.display="block";
+    box.innerHTML = contenidoFinal;
+    box.style.display = "block";
 
-    } else {
+} else {
         box.innerHTML='<div class="error-box">No se encontró ningún registro con los datos ingresados.</div>';
         box.style.display="block";
     }
