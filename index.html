@@ -298,20 +298,30 @@ if (registro) {
     }
 
     box.innerHTML = `
-        <p><strong>Titular:</strong> ${registro.nombre}</p>
-        <p><strong>(DNI):</strong> ${registro.dni}</p>
-        <p><strong>(CUV):</strong> ${registro.cu}</p>
-        <p><strong>Documentación:</strong> ${registro.tipo}</p>
-        <p><strong>Fecha de Validación:</strong> ${registro.fecha}</p>
-        <p><strong>Estado:</strong> 
-            <span class="status ${registro.estado}">
+    <p><strong>Titular:</strong> ${registro.nombre}</p>
+    <p><strong>DNI:</strong> ${registro.dni}</p>
+    <p><strong>CUV:</strong> ${registro.cu}</p>
+    <p><strong>Documentación:</strong> ${registro.tipo}</p>
+    <p><strong>Fecha de Validación:</strong> ${registro.fecha}</p>
+    <p><strong>Estado:</strong> 
+        <span class="status ${registro.estado}">
             ${registro.estado.toUpperCase()}
-            </span>
-        </p>
-        <div class="botones-container">
-            ${botonesDocs}
-        </div>
-    `;
+        </span>
+    </p>
+
+    <p><strong>Responsable Técnico:</strong> ${registro.responsable}</p>
+
+    <p><strong>Observaciones:</strong></p>
+    <div style="background:#fff;padding:12px;border-radius:6px;margin-top:8px;">
+        ${registro.observaciones}
+    </div>
+
+    <div class="botones-container">
+        ${botonesDocs}
+        ${registro.certificado ? `<a href="${registro.certificado}" target="_blank" class="doc-btn">Descargar Certificación</a>` : ""}
+        ${registro.credencial ? `<a href="${registro.credencial}" target="_blank" class="doc-btn">Ver Credencial</a>` : ""}
+    </div>
+`;
 
     box.style.display = "block";
 
