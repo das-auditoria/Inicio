@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DAS - Verificación de Trámite</title>
+<title>DAS – Escribanía | Verificación de Documentos</title>
 
 <style>
 :root {
@@ -30,7 +30,7 @@ form{display:flex;flex-direction:column;gap:15px;}
 input{padding:12px;font-size:16px;border-radius:5px;border:1px solid var(--gris-oscuro);}
 button, .doc-btn{padding:12px 16px;font-size:15px;border:none;border-radius:6px;background-color:var(--azul-sec);color:white;cursor:pointer;transition:0.2s;text-decoration:none;display:inline-block;text-align:center;}
 button:hover, .doc-btn:hover{background-color:var(--azul-brillante);}
-.botones-container{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;}
+.botones-container{display:flex;flex-direction:column;gap:12px;margin-top:20px;}
 .pdf-btn{margin-top:25px;}
 .result{margin-top:25px;padding:20px;border-radius:10px;background-color:var(--gris-oscuro);display:none;animation:fadeIn 0.4s ease-in-out;position:relative;}
 @keyframes fadeIn{from{opacity:0; transform:translateY(10px);}to{opacity:1; transform:translateY(0);}}
@@ -39,11 +39,10 @@ button:hover, .doc-btn:hover{background-color:var(--azul-brillante);}
 .pendiente{background-color:var(--amarillo); color:#333;}
 .rechazado{background-color:var(--rojo);}
 .error-box{background:#ffe5e5;color:#b30000;padding:15px;border-radius:8px;font-weight:bold;text-align:center;}
-.sello-digital{margin-top:20px;padding:14px;border:2px solid var(--azul-sec);border-radius:8px;text-align:center;font-weight:bold;color:var(--azul-sec);background:#eef4ff;letter-spacing:1px;}
-.validado-img{position:absolute;right:05px;bottom:20px;max-width:220px;opacity:0.95;}
 footer{background-color:var(--azul);color:white;padding:35px 20px;margin-top:60px;text-align:center;}
 .footer-line{width:60px;height:3px;background-color:var(--azul-brillante);margin:15px auto;}
 .footer-copy{margin-top:15px;font-size:12px;opacity:0.7;}
+.documento-embed img{max-width:220px;margin-top:10px;}
 </style>
 </head>
 
@@ -52,9 +51,9 @@ footer{background-color:var(--azul);color:white;padding:35px 20px;margin-top:60p
 <header>
     <div class="header-content">
         <div class="header-left">
-            <img src="https://i.postimg.cc/D0T5XNJX/file-00000000ea5c71f5af05c32a457144cb.png" alt="Logo DAS">
+            <img src="https://i.postimg.cc/mDCTt6f2/file-000000009690720e942286abeaf15f14.png" alt="Logo DAS">
             <div class="header-title">
-                Departamento de Auditoría y Servicios
+                DAS – Escribanía
             </div>
         </div>
 
@@ -70,11 +69,11 @@ footer{background-color:var(--azul);color:white;padding:35px 20px;margin-top:60p
 </header>
 
 <div class="container">
-    <h2>Sistema de Validación Documental Certificada</h2>
-    <p>A los efectos de verificar la autenticidad de la documentación registrada, deberá ingresar el Código Único de Validación (CUV) y su Documento Nacional de Identidad (DNI).</p>
+    <h2>Verificación de Documentos Notariales</h2>
+    <p>Ingrese el Código de Registro y su Documento Nacional de Identidad (DNI) para verificar la autenticidad de su escritura o certificación notarial.</p>
 
     <form id="searchForm">
-        <input type="text" id="cu" placeholder="Código Único de Verificación (CUV)" pattern="[0-9]+" inputmode="numeric" required>
+        <input type="text" id="cu" placeholder="Código de Registro" pattern="[0-9]+" inputmode="numeric" required>
         <input type="text" id="dni" placeholder="Documento Nacional de Identidad (DNI)" pattern="[0-9]+" inputmode="numeric" required>
         <button type="submit">Buscar</button>
     </form>
@@ -83,264 +82,61 @@ footer{background-color:var(--azul);color:white;padding:35px 20px;margin-top:60p
 </div>
 
 <footer>
-    <div>DAS – Departamento de Auditoría y Servicios</div>
+    <div>DAS – Escribanía</div>
     <div class="footer-line"></div>
-    Registro Institucional Nº 2026-AR-DAS-4581<br>
-    Certificaciones oficiales con registro electrónico verificable
+    Registro Notarial – CABA<br>
+    Certificaciones notariales verificables electrónicamente.
     <div class="footer-copy">
         © 2026 DAS – Todos los derechos reservados.<br>
-        Este sitio web constituye una plataforma informativa de verificación documental.
+        Este sitio web constituye una plataforma de verificación de documentos notariales.
     </div>
 </footer>
 
 <script>
 const registros=[
-
-{
-    tramite:"DAS-2026-2488",
-    cu:"24639",
-    dni:"41932030",
-    nombre:"Milena Milagros Adoracion, Díaz",
-    tipo:"Analítico y Título – Nivel Secundario",
-    fecha:"13/02/2026 | 16:14 hs.",
-    estado:"aprobado",
-    responsable:"Daiana Jaqueline Báez",
-    observaciones:"La documentación fue sometida a procedimiento de auditoría técnica documental bajo estándares internos de validación y control registral de DAS. Se efectuó análisis de legitimidad formal, verificación de autenticidad material, contraste de datos con soporte declarativo y revisión de integridad estructural del contenido, conforme a protocolo vigente. No se detectaron observaciones técnicas ni inconsistencias al momento de la evaluación. El trámite posee registro electrónico activo, con trazabilidad y constancia verificable en el sistema institucional.",
-    documentos:[
-        {nombre:"Descargar Documento 1", link:"https://drive.google.com/uc?export=view&id=ID1"},
-        {nombre:"Descargar Documento 2", link:"https://drive.google.com/uc?export=view&id=ID1"}
-    ],
-    certificado:"https://drive.google.com/file/d/1lRxTi0o32XV82xXgwcV1LMeYaF3VY9uJ/view?usp=drivesdk"
-},
     {
-    tramite:"DAS-2026-6920",
-    cu:"35740",
-    dni:"46552520",
-    nombre:"ALEJANDRO OSCAR CHÁVEZ",
-    tipo:"Analítico y Título – Nivel Secundario Técnico",
-    fecha:"23/02/2026 | 19:46 hs.",
-    estado:"aprobado",
-    responsable:"Daiana Jaqueline Báez",
-    observaciones:"La documentación fue sometida a procedimiento de auditoría técnica documental bajo estándares internos de validación y control registral de DAS. Se efectuó análisis de legitimidad formal, verificación de autenticidad material, contraste de datos con soporte declarativo y revisión de integridad estructural del contenido, conforme a protocolo vigente. No se detectaron observaciones técnicas ni inconsistencias al momento de la evaluación. El trámite posee registro electrónico activo, con trazabilidad y constancia verificable en el sistema institucional.",
-    documentos:[
-        {nombre:"Descargar Documento 1", link:"https://drive.google.com/file/d/1i-AAh3Y1Yp3s-7wlKj6McOVivfIWM7TP/view?usp=drivesdk"},
-        {nombre:"Descargar Documento 2", link:"https://drive.google.com/file/d/1QkA5Kof7IO-bYNQPt27RfMwdzUottW-e/view?usp=drivesdk"}
-    ],
-    certificado:"https://drive.google.com/file/d/18xM2oNOXovDGFgmeYr2HoW-N948BKfMX/view?usp=drivesdk"
-},
+        tramite:"81244/2026",
+        cu:"46851",
+        dni:"48458329",
+        nombre:"Axel Maximo Iraola Paita",
+        tipo:"Escritura Pública de Cesión de Derechos (Inmueble HAEDO)",
+        fecha:"25/02/2026 | 15:22 hs.",
+        estado:"aprobado",
+        responsable:"Dra. Daiana Jaqueline Báez – Escribana Pública",
+        observaciones:"Documento de Cesión de Derechos verificado conforme a protocolos notariales vigentes. La transferencia de derechos se encuentra registrada y autenticada electrónicamente, con constancia legal y trazabilidad en el sistema notarial. Registro activo y verificado por la escribana responsable.",
+        documentos:[
+            {nombre:"Escritura Certificada", link:"https://drive.google.com/file/d/1sqmbUsN80MAFfx6E1pxQZU0YI5uNIwEQ/view?usp=drivesdk"}
+        ]
+    },
     {
-    tramite:"DAS-2026-1305",
-    cu:"46851",
-    dni:"48610704",
-    nombre:"AUGUSTO NAHUEL CHÁVEZ",
-    tipo:"Analítico y Título – Nivel Secundario Técnico",
-    fecha:"15/12/2026 | 09:10 hs.",
-    estado:"aprobado",
-    responsable:"Daiana Jaqueline Báez",
-    observaciones:"La documentación fue sometida a procedimiento de auditoría técnica documental bajo estándares internos de validación y control registral de DAS. Se efectuó análisis de legitimidad formal, verificación de autenticidad material, contraste de datos con soporte declarativo y revisión de integridad estructural del contenido, conforme a protocolo vigente. No se detectaron observaciones técnicas ni inconsistencias al momento de la evaluación. El trámite posee registro electrónico activo, con trazabilidad y constancia verificable en el sistema institucional.",
-    documentos:[
-        {nombre:"Descargar Documento 1", link:"https://drive.google.com/file/d/1DGfThCD6yUtogP0qdwgOeVgH8d2t9xLY/view?usp=drivesdk"},
-        {nombre:"Descargar Documento 2", link:"https://drive.google.com/file/d/1BURjZMwXbq1V_qR_bhdLr2okGyAW7HeY/view?usp=drivesdk"}
-    ],
-    certificado:"https://drive.google.com/file/d/1XEr1xOewRDsjwPvIJpoaJft2lDUd1MfG/view?usp=drivesdk"
-},
+        tramite:"173/2026",
+        cu:"57962",
+        dni:"48458329",
+        nombre:"Axel Maximo Iraola Paita",
+        tipo:"Certificado de Escritura (Inmueble EZEIZA)",
+        fecha:"15/12/2025 | 16:10 hs.",
+        estado:"aprobado",
+        responsable:"Dra. Daiana Jaqueline Báez – Escribana Pública",
+        observaciones:"Documento certificado conforme a protocolos notariales vigentes. La escritura ha sido revisada y autenticada por la escribana pública, con registro electrónico activo y constancia legal verificable.",
+        documentos:[
+            {nombre:"Certificado", link:"https://drive.google.com/file/d/1ZF2lzcmVF3BXwT7y7r4F_UFwUr0KVwS_/view?usp=drivesdk"}
+        ]
+    },
     {
-    tramite:"DAS-2026-7777",
-    cu:"68073",
-    dni:"25873395",
-    nombre:"MARÍA DE LOS ÁNGELES SILVA",
-    tipo:"Analítico y Título – (Nivel Universitario) LICENCIATURA",
-    fecha:"28/02/2026 | 15:30 hs.",
-    estado:"aprobado",
-    responsable:"Daiana Jaqueline Báez",
-    observaciones:"La documentación fue sometida a procedimiento de auditoría técnica documental bajo estándares internos de validación y control registral de DAS. Se efectuó análisis de legitimidad formal, verificación de autenticidad material, contraste de datos con soporte declarativo y revisión de integridad estructural del contenido, conforme a protocolo vigente. No se detectaron observaciones técnicas ni inconsistencias al momento de la evaluación. El trámite posee registro electrónico activo, con trazabilidad y constancia verificable en el sistema institucional.",
-    documentos:[
-        {nombre:"Descargar Documento 1", link:"https://drive.google.com/file/d/1H4UIAGriCrSE8mhqo3vuP1EMn6geXJXs/view?usp=drivesdk"},
-        {nombre:"Descargar Documento 2", link:"https://drive.google.com/file/d/1MtTG88yonqkPxUrdLEAbqbiDvIm1hbP5/view?usp=drivesdk"}
-    ],
-    certificado:"https://drive.google.com/file/d/15_LbsTPygzmU0xfLmJBjOUScQWdD2ZaZ/view?usp=drivesdk"
-},
-    {
-    tramite:"DAS-2026-9826",
-    cu:"79184",
-    dni:"27426666",
-    nombre:"DANTE ALEJANDRO ARAOZ",
-    tipo:"Analítico y Título – Nivel Universitario",
-    fecha:"01/03/2026 | 04:26 hs.",
-    estado:"aprobado",
-    responsable:"Daiana Jaqueline Báez",
-    observaciones:"La documentación fue sometida a procedimiento de auditoría técnica documental bajo estándares internos de validación y control registral de DAS. Se efectuó análisis de legitimidad formal, verificación de autenticidad material, contraste de datos con soporte declarativo y revisión de integridad estructural del contenido, conforme a protocolo vigente. No se detectaron observaciones técnicas ni inconsistencias al momento de la evaluación. El trámite posee registro electrónico activo, con trazabilidad y constancia verificable en el sistema institucional.",
-    documentos:[
-        {nombre:"Descargar Documento 1", link:"https://drive.google.com/file/d/1fAhbivN_tnFr9If036YPdu6gFS99s9Ea/view?usp=drivesdk"},
-        {nombre:"Descargar Documento 2", link:"https://drive.google.com/file/d/1aP0ntmFzjxlS8KX1ORZ0J1LFjRwfrKFG/view?usp=drivesdk"}
-    ],
-    certificado:"https://drive.google.com/file/d/1sqohWx3q3u0JZkUcWZOGLySyWcS6bmUM/view?usp=drivesdk",
-    credencial:"https://das-auditoria.github.io/Inicio/credencial.html"
-},
-    {
-    tramite:"DAS-2026-7686",
-    cu:"80295",
-    dni:"28798016",
-    nombre:"MARIANA GABRIELA AGUIRRE",
-    tipo:"Analítico y Título – Nivel Terciario",
-    fecha:"01/03/2026 | 12:24 hs.",
-    estado:"aprobado",
-    responsable:"Daiana Jaqueline Báez",
-    observaciones:"La documentación fue sometida a procedimiento de auditoría técnica documental bajo estándares internos de validación y control registral de DAS. Se efectuó análisis de legitimidad formal, verificación de autenticidad material, contraste de datos con soporte declarativo y revisión de integridad estructural del contenido, conforme a protocolo vigente. No se detectaron observaciones técnicas ni inconsistencias al momento de la evaluación. El trámite posee registro electrónico activo, con trazabilidad y constancia verificable en el sistema institucional.",
-    documentos:[
-        {nombre:"Descargar Documento 1", link:"https://drive.google.com/file/d/1rHynEsMHPdeggiHKbogCGlkH8-ShuAUo/view?usp=drivesdk"},
-        {nombre:"Descargar Documento 2", link:"https://drive.google.com/file/d/1HbQqubPYAoa7cgH-BLG2DVdm_9DmHQg6/view?usp=drivesdk"}
-    ],
-    certificado:"https://drive.google.com/file/d/1-UAwi6iqaI3A2KY9BgHNnGffIZA6uX5F/view?usp=drivesdk"
-},
-    {
-    tramite:"DAS-2026-9001",
-    cu:"91306",
-    dni:"28981399",
-    nombre:"MAURICIO LUIS NAVARRO",
-    tipo:"Certificación de PERSONAL TRAINER c/ CREDENCIAL",
-    fecha:"01/03/2026 | 20:02 hs.",
-    estado:"aprobado",
-    responsable:"Daiana Jaqueline Báez",
-    observaciones:"La documentación fue sometida a procedimiento de auditoría técnica documental bajo estándares internos de validación y control registral de DAS. Se efectuó análisis de legitimidad formal, verificación de autenticidad material, contraste de datos con soporte declarativo y revisión de integridad estructural del contenido, conforme a protocolo vigente. No se detectaron observaciones técnicas ni inconsistencias al momento de la evaluación. El trámite posee registro electrónico activo, con trazabilidad y constancia verificable en el sistema institucional.",
-    documentos:[
-        {nombre:"Descargar Documento 1", link:"https://drive.google.com/file/d/1tXsy93S6NXKaXbnXzwSowi6nhrzVbrQH/view?usp=drivesdk"},
-        {nombre:"Descargar Documento 2", link:"https://drive.google.com/file/d/1tXsy93S6NXKaXbnXzwSowi6nhrzVbrQH/view?usp=drivesdk"}
-    ],
-        certificado:"https://drive.google.com/file/d/1oeqLP-cuhmr0G6pXLknz0BEhAsjto_Ra/view?usp=drivesdk",
-        credencial:"https://das-auditoria.github.io/Inicio/navarro-credencial.html"
-},
-    {
-    tramite:"DAS-2026-2223",
-    cu:"46851",
-    dni:"28981399",
-    nombre:"MAURICIO LUIS NAVARRO",
-    tipo:"Certificación de Analítico y Título",
-    fecha:"04/03/2026 | 12:09 hs.",
-    estado:"aprobado",
-    responsable:"Daiana Jaqueline Báez",
-    observaciones:"La documentación fue sometida a procedimiento de auditoría técnica documental bajo estándares internos de validación y control registral de DAS. Se efectuó análisis de legitimidad formal, verificación de autenticidad material, contraste de datos con soporte declarativo y revisión de integridad estructural del contenido, conforme a protocolo vigente. No se detectaron observaciones técnicas ni inconsistencias al momento de la evaluación. El trámite posee registro electrónico activo, con trazabilidad y constancia verificable en el sistema institucional.",
-    documentos:[
-        {nombre:"Descargar Documento 1", link:"https://drive.google.com/file/d/13wrxpLjXOkO0y-z1Rmx-Eumk8Czzz9II/view?usp=drivesdk"},
-        {nombre:"Descargar Documento 2", link:"https://drive.google.com/file/d/1egYkW1somtrvg0lVnP_dqrm9gZtD-QP8/view?usp=drivesdkk"}
-    ],
-        certificado:"https://drive.google.com/file/d/15ZwNvN78f0H1ze3JOs0Yjp8i7Zvn4tO3/view?usp=drivesdk"
-},
-    {
-    tramite:"DAS-2026-1423",
-    cu:"57962",
-    dni:"28981399",
-    nombre:"MAURICIO LUIS NAVARRO",
-    tipo:"Certificación de Analítico y Título",
-    fecha:"04/03/2026 | 15:37 hs.",
-    estado:"aprobado",
-    responsable:"Daiana Jaqueline Báez",
-    observaciones:"La documentación fue sometida a procedimiento de auditoría técnica documental bajo estándares internos de validación y control registral de DAS. Se efectuó análisis de legitimidad formal, verificación de autenticidad material, contraste de datos con soporte declarativo y revisión de integridad estructural del contenido, conforme a protocolo vigente. No se detectaron observaciones técnicas ni inconsistencias al momento de la evaluación. El trámite posee registro electrónico activo, con trazabilidad y constancia verificable en el sistema institucional.",
-    documentos:[
-        {nombre:"Descargar Documento 1", link:"https://drive.google.com/file/d/1UvHQaodFLeD-24go31_s4RDCDq5aSFMH/view?usp=drivesdk"},
-        {nombre:"Descargar Documento 2", link:"https://drive.google.com/file/d/137lr7-xG4r40Zr9Jjj0od4B7fi3OFTvP/view?usp=drivesdk"}
-    ],
-        certificado:"https://drive.google.com/file/d/1PNRoPx64NnKMc1j-GheCROkfUeBPEQRx/view?usp=drivesdk"
-},
-    {
-    tramite:"DAS-2026-4974",
-    cu:"13528",
-    dni:"33377538",
-    nombre:"SILVIA PATRICIA ESCALANTE",
-    tipo:"Certificación de Analítico y Título - Nivel Superior",
-    fecha:"03/03/2026 | 21:49 hs.",
-    estado:"aprobado",
-    responsable:"Daiana Jaqueline Báez",
-    observaciones:"La documentación fue sometida a procedimiento de auditoría técnica documental bajo estándares internos de validación y control registral de DAS. Se efectuó análisis de legitimidad formal, verificación de autenticidad material, contraste de datos con soporte declarativo y revisión de integridad estructural del contenido, conforme a protocolo vigente. No se detectaron observaciones técnicas ni inconsistencias al momento de la evaluación. El trámite posee registro electrónico activo, con trazabilidad y constancia verificable en el sistema institucional.",
-    documentos:[
-        {nombre:"Descargar Documento 1", link:"https://drive.google.com/file/d/1t05DQX_Jf3ndDyB7gT8HTVkXMzHkuuVE/view?usp=drivesdk"},
-        {nombre:"Descargar Documento 2", link:"https://drive.google.com/file/d/1KhwsHYAYhFHrhnXYerSIJ5agLi-_nc1M/view?usp=drivesdk"}
-    ],
-        certificado:"https://drive.google.com/file/d/1CVxLJL8xm5I-dDOf3ooVRAU9bH-8YoGk/view?usp=drivesdk"
-},
-    {
-    tramite:"DAS-2026-2222",
-    cu:"24639",
-    dni:"40151212",
-    nombre:"AYELEN DAIANA VARGA",
-    tipo:"Certificación de Analítico y Título - Nivel Secundario",
-    fecha:"05/03/2026 | 20:28 hs.",
-    estado:"aprobado",
-    responsable:"Daiana Jaqueline Báez",
-    observaciones:"La documentación fue sometida a procedimiento de auditoría técnica documental bajo estándares internos de validación y control registral de DAS. Se efectuó análisis de legitimidad formal, verificación de autenticidad material, contraste de datos con soporte declarativo y revisión de integridad estructural del contenido, conforme a protocolo vigente. No se detectaron observaciones técnicas ni inconsistencias al momento de la evaluación. El trámite posee registro electrónico activo, con trazabilidad y constancia verificable en el sistema institucional.",
-    documentos:[
-        {nombre:"Descargar Documento 1", link:"https://drive.google.com/file/d/1-9qvl73wLo9MYT5Q4Dv5hoAERRopu-SJ/view?usp=drivesdk"},
-        {nombre:"Descargar Documento 2", link:"https://drive.google.com/file/d/1tHXkvjIZXl5FxKSX-SOf5_5_Aba9-IT0/view?usp=drivesdk"}
-    ],
-        certificado:"https://drive.google.com/file/d/11ODNZ0Do-yTx1oPmPuQXoTL7HzXV__YH/view?usp=drivesdk"
-},  
-    {
-    tramite:"DAS-2026-6932",
-    cu:"35740",
-    dni:"40151212",
-    nombre:"AYELEN DAIANA VARGA",
-    tipo:"Certificación de Analítico y Título - Nivel Universitario",
-    fecha:"05/03/2026 | 23:19 hs.",
-    estado:"aprobado",
-    responsable:"Daiana Jaqueline Báez",
-    observaciones:"La documentación fue sometida a procedimiento de auditoría técnica documental bajo estándares internos de validación y control registral de DAS. Se efectuó análisis de legitimidad formal, verificación de autenticidad material, contraste de datos con soporte declarativo y revisión de integridad estructural del contenido, conforme a protocolo vigente. No se detectaron observaciones técnicas ni inconsistencias al momento de la evaluación. El trámite posee registro electrónico activo, con trazabilidad y constancia verificable en el sistema institucional.",
-    documentos:[
-        {nombre:"Descargar Documento 1", link:"https://drive.google.com/file/d/1sYYmr_sLIxzrXGLXHJ0IH7_ATbpRrxR8/view?usp=drivesdk"},
-        {nombre:"Descargar Documento 2", link:"https://drive.google.com/file/d/1DkEtQxCNfOKOju2Gse2zkuVGOqr3YI-2/view?usp=drivesdk"}
-    ],
-        certificado:"https://drive.google.com/file/d/1MI44RPYPIOrM91JvWZiIS9B3G8gcXjAm/view?usp=drivesdk"
-},  
-    {
-    tramite:"DAS-2026-9845",
-    cu:"35740",
-    dni:"41511413",
-    nombre:"NADIA AILEN D'AGOSTINO",
-    tipo:"Certificación de Analítico y Título - Nivel Secundario",
-    fecha:"04/03/2026 | 10:56 hs.",
-    estado:"aprobado",
-    responsable:"Daiana Jaqueline Báez",
-    observaciones:"La documentación fue sometida a procedimiento de auditoría técnica documental bajo estándares internos de validación y control registral de DAS. Se efectuó análisis de legitimidad formal, verificación de autenticidad material, contraste de datos con soporte declarativo y revisión de integridad estructural del contenido, conforme a protocolo vigente. No se detectaron observaciones técnicas ni inconsistencias al momento de la evaluación. El trámite posee registro electrónico activo, con trazabilidad y constancia verificable en el sistema institucional.",
-    documentos:[
-        {nombre:"Descargar Documento 1", link:"https://drive.google.com/file/d/1tHXkvjIZXl5FxKSX-SOf5_5_Aba9-IT0/view?usp=drivesdk"},
-        {nombre:"Descargar Documento 2", link:"https://drive.google.com/file/d/1-9qvl73wLo9MYT5Q4Dv5hoAERRopu-SJ/view?usp=drivesdk"}
-    ],
-        certificado:"https://drive.google.com/file/d/1LjwwULRpPmcRvTcCD6xR0zdavsNdlYAV/view?usp=drivesdk"
-},
-    {
-    tramite:"DAS-2026-1413",
-    cu:"68073",
-    dni:"327520",
-    nombre:"JUAN VÍCTOR GONZÁLEZ",
-    tipo:"Certificación de Analítico y Título - Nivel Secundario Técnico",
-    fecha:"04/03/2026 | 17:50 hs.",
-    estado:"aprobado",
-    responsable:"Daiana Jaqueline Báez",
-    observaciones:"La documentación fue sometida a procedimiento de auditoría técnica documental bajo estándares internos de validación y control registral de DAS. Se efectuó análisis de legitimidad formal, verificación de autenticidad material, contraste de datos con soporte declarativo y revisión de integridad estructural del contenido, conforme a protocolo vigente. No se detectaron observaciones técnicas ni inconsistencias al momento de la evaluación. El trámite posee registro electrónico activo, con trazabilidad y constancia verificable en el sistema institucional.",
-    documentos:[
-        {nombre:"Descargar Documento 1", link:"https://drive.google.com/file/d/1NmSpWY1YY3KF1BISbR-DqnWuh1LDDgqS/view?usp=drivesdk"},
-        {nombre:"Descargar Documento 2", link:"https://drive.google.com/file/d/11nzdT6kB0RxgQR2w-x9byJoDJAPbbT1G/view?usp=drivesdk"}
-    ],
-        certificado:"https://drive.google.com/file/d/11ODNZ0Do-yTx1oPmPuQXoTL7HzXV__YH/view?usp=drivesdk"
-},
-    {
-    tramite:"DAS-2026-1313",
-    cu:"48099",
-    dni:"40148099",
-    nombre:"VALENTINA AHITANA MONTEROS",
-    tipo:"Certificación de Título - Licenciatura en Economía",
-    fecha:"05/03/2026 | 13:37 hs.",
-    estado:"aprobado",
-    responsable:"Daiana Jaqueline Báez",
-    observaciones:"La documentación fue sometida a procedimiento de auditoría técnica documental bajo estándares internos de validación y control registral de DAS. Se efectuó análisis de legitimidad formal, verificación de autenticidad material, contraste de datos con soporte declarativo y revisión de integridad estructural del contenido, conforme a protocolo vigente. No se detectaron observaciones técnicas ni inconsistencias al momento de la evaluación. El trámite posee registro electrónico activo, con trazabilidad y constancia verificable en el sistema institucional.",
-    documentos:[
-        {nombre:"Descargar Documento 1", link:"https://drive.google.com/file/d/1suo1U5BRlDybPGBAzp3weSqGqgaLL1bq/view?usp=drivesdk"},
-        {nombre:"Descargar Documento 2", link:"https://drive.google.com/file/d/1Ol67duaV47VhIwWTA27Pusyttkk0F7qm/view?usp=drivesdk"}
-    ],
-        certificado:"https://drive.google.com/file/d/1BTDaLvEctVSYT-QIaA6EpE7tNgfSXsgS/view?usp=drivesdk"
-}
+        tramite:"90133/2026",
+        cu:"35740",
+        dni:"48458329",
+        nombre:"Axel Maximo Iraola Paita",
+        tipo:"Escritura Pública de Cesión de Derechos (Inmueble EZEIZA)",
+        fecha:"19/02/2026 | 13:05 hs.",
+        estado:"aprobado",
+        responsable:"Dra. Daiana Jaqueline Báez – Escribana Pública",
+        observaciones:"Documento de Cesión de Derechos verificado conforme a protocolos notariales vigentes. La transferencia de derechos se encuentra registrada y autenticada electrónicamente, con constancia legal y trazabilidad en el sistema notarial. Registro activo y verificado por la escribana responsable.",
+        documentos:[
+            {nombre:"Escritura Certificada", link:"https://drive.google.com/file/d/1fQxQYZkC599Zylxd06olXPRRzKF6IFof/view?usp=drivesdk"}
+        ]
+    }
 ];
-
-let registroActual=null;
 
 document.getElementById("searchForm").addEventListener("submit",function(e){
     e.preventDefault();
@@ -351,47 +147,40 @@ document.getElementById("searchForm").addEventListener("submit",function(e){
 
     const registro = registros.find(r => r.cu === cu && r.dni === dni);
 
-if (registro) {
+    if (registro) {
+        let botonesDocs = "";
+        if (registro.documentos && registro.documentos.length > 0) {
+            registro.documentos.forEach(doc => {
+                botonesDocs += `
+                <div class="botones-container">
+                    <a href="${doc.link}" target="_blank" class="doc-btn">Ver ${doc.nombre}</a>
+                </div>`;
+            });
+        }
 
-    let botonesDocs = "";
-    if (registro.documentos && registro.documentos.length > 0) {
-        registro.documentos.forEach(doc => {
-            botonesDocs += `<a href="${doc.link}" target="_blank" class="doc-btn">${doc.nombre}</a>`;
-        });
-    }
-
-    box.innerHTML = `
-    <p><strong>Titular:</strong> ${registro.nombre}</p>
-    <p><strong>DNI:</strong> ${registro.dni}</p>
-    <p><strong>CUV:</strong> ${registro.cu}</p>
-    <p><strong>Documentación:</strong> ${registro.tipo}</p>
-    <p><strong>Fecha de Validación:</strong> ${registro.fecha}</p>
-    <p><strong>Estado:</strong> 
-        <span class="status ${registro.estado}">
-            ${registro.estado.toUpperCase()}
-        </span>
-    </p>
-
-    <p><strong>Responsable Técnico:</strong> ${registro.responsable}</p>
-
-    <p><strong>Observaciones:</strong></p>
-    <div style="background:#fff;padding:12px;border-radius:6px;margin-top:8px;">
-        ${registro.observaciones}
-    </div>
-
-    <div class="botones-container">
+        box.innerHTML = `
+        <p><strong>Titular:</strong> ${registro.nombre}</p>
+        <p><strong>DNI:</strong> ${registro.dni}</p>
+        <p><strong>Código de Registro:</strong> ${registro.cu}</p>
+        <p><strong>Documento:</strong> ${registro.tipo}</p>
+        <p><strong>Fecha de Registro:</strong> ${registro.fecha}</p>
+        <p><strong>Estado:</strong> 
+            <span class="status ${registro.estado}">
+                ${registro.estado.toUpperCase()}
+            </span>
+        </p>
+        <p><strong>Escribana Responsable:</strong> ${registro.responsable}</p>
+        <p><strong>Observaciones:</strong></p>
+        <div style="background:#fff;padding:12px;border-radius:6px;margin-top:8px;">
+            ${registro.observaciones}
+        </div>
         ${botonesDocs}
-        ${registro.certificado ? `<a href="${registro.certificado}" target="_blank" class="doc-btn">Descargar Certificación</a>` : ""}
-        ${registro.credencial ? `<a href="${registro.credencial}" target="_blank" class="doc-btn">Ver Credencial</a>` : ""}
-    </div>
-`;
-
-    box.style.display = "block";
-
-} else {
-    box.innerHTML = '<div class="error-box">No se encontró ningún registro con los datos ingresados.</div>';
-    box.style.display = "block";
-}
+        `;
+        box.style.display = "block";
+    } else {
+        box.innerHTML = '<div class="error-box">No se encontró ningún registro con los datos ingresados.</div>';
+        box.style.display = "block";
+    }
 });
 </script>
 
